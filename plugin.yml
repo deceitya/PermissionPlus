@@ -1,9 +1,11 @@
 name: PermissionPlus
 main: PermissionPlus\PermissionPlus
-version: 1.6.2
+version: 1.7.0
 api: [3.0.0]
 load: STARTUP
 author: Hmy2001
+authors:
+  - deceitya
 commands:
  pp:
   description: PermissionPlus help
@@ -15,6 +17,9 @@ commands:
   description: Manages player permission
  ppsub:
   description: PermissionPlus preferences
+ ppcmdall:
+  aliases: [ppca]
+  description: Manages player permission
  ppconfig:
   aliases: [ppcfg]
   description: PermissionPlus preferences
