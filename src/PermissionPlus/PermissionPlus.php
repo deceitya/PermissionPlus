@@ -72,6 +72,8 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                 $msg = $this->permissionUsage("c");
                 $sender->sendMessage($this->lang->translateString("usage")." /ppcommand ".$this->lang->translateString("usage.c")." $msg");
                 $msg = $this->permissionUsage("c");
+                $sender->sendMessage($this->lang->translateString("usage")." /ppcmdall ".$msg);
+                $msg = $this->permissionUsage("c");
                 $sender->sendMessage($this->lang->translateString("usage")." /ppsub ".$this->lang->translateString("usage.sc")." $msg");
                 $sender->sendMessage($this->lang->translateString("usage")." /ppconfig");
                 break;
