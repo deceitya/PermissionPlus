@@ -1,6 +1,6 @@
 name: PermissionPlus
 main: PermissionPlus\PermissionPlus
-version: 1.7.0
+version: 1.8.0
 api: [3.0.0]
 load: STARTUP
 author: Hmy2001
@@ -22,4 +22,6 @@ commands:
   description: Manages player permission
  ppconfig:
   aliases: [ppcfg]
+  description: PermissionPlus preferences
+ ppsort:
   description: PermissionPlus preferences

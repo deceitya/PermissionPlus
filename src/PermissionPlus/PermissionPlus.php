@@ -76,6 +76,7 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                 $msg = $this->permissionUsage("c");
                 $sender->sendMessage($this->lang->translateString("usage")." /ppsub ".$this->lang->translateString("usage.sc")." $msg");
                 $sender->sendMessage($this->lang->translateString("usage")." /ppconfig");
+                $sender->sendMessage($this->lang->translateString("usage")." /ppsort");
                 break;
             case "ppplayer":
                 $player = array_shift($args);
@@ -138,6 +139,16 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                 }
                 $this->setSPermission($cmd, $subcmd, $args, $sender);
                 $this->getConfig()->save();
+                break;
+            case "ppsort":
+                $permissions = $this->getConfig()->get("command");
+                foreach ($permissions as $permission => $cmds) {
+                    ksort($cmds);
+                    $permissions[$permission] = $cmds;
+                }
+                $this->getConfig()->set("command", $permissions);
+                $this->getConfig()->save();
+                $sender->sendMessage("[Permission+] ".$this->lang->translateString("cmd.sort"));
                 break;
             case "ppconfig":
                 $config = array_shift($args);
@@ -655,7 +666,8 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                         'ppcommand' => true,
                         'ppconfig' => true,
                         'ppsub' => true,
-                        'ppcmdall' => true
+                        'ppcmdall' => true,
+                        'ppsort' => true
                     ],
                     "TRUST" => [
                         'ban' => false,
@@ -696,7 +708,8 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                         'ppcommand' => false,
                         'ppconfig' => false,
                         'ppsub' => false,
-                        'ppcmdall' => false
+                        'ppcmdall' => false,
+                        'ppsort' => false
                     ],
                     "GUEST" => [
                         'ban' => false,
@@ -737,7 +750,8 @@ class PermissionPlus extends PluginBase implements Listener, CommandExecutor
                         'ppcommand' => false,
                         'ppconfig' => false,
                         'ppsub' => false,
-                        'ppcmdall' => false
+                        'ppcmdall' => false,
+                        'ppsort' => false
                     ],
                 ],
             ]);
